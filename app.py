@@ -23,13 +23,13 @@ def after_request(response):
     return response
 
 
-@app.route('/entries')
+@app.route('/')
 def index():
     entries = models.Journal.select()
     return render_template('index.html', entries=entries)
 
 
-@app.route('/entries/add', methods=['GET', 'POST'])
+@app.route('/add', methods=['GET', 'POST'])
 def add():
     """Create a journal entry."""
     form = forms.JournalForm()
@@ -45,14 +45,14 @@ def add():
     return render_template('add.html', form=form)
 
 
-@app.route('/entries/details/<int:entry_id>')
+@app.route('/details/<int:entry_id>')
 def detail(entry_id):
     journals = models.Journal.select().where(
         models.Journal.id == entry_id)
     return render_template('detail.html', entries=journals)
 
 
-@app.route('/entries/delete/<int:entry_id>', methods=['GET', 'POST'])
+@app.route('/delete/<int:entry_id>', methods=['GET', 'POST'])
 def delete(entry_id):
     entry = models.Journal.select().where(
         models.Journal.id == entry_id).get()
