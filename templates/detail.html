@@ -11,36 +11,30 @@
 {% endblock %}
 
 {% block content %}
-
 {% for journal in entries %}
+<table class="u-full-width">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Time Spent</th>
+      <th>What You learned</th>
+      <th>Resources</th>
+    </tr>
+  </thead>
+  <tbody>
 
-<form method='GET' action=''>
-  <div class="row">
-    <div class="six columns">
-      {{ journal.title }}
-    </div>
-  </div>
-  <div class="row">
-    <div class="six columns">
-      {{ journal.date }}
-    </div>
-  </div>
-  <div class="row">
-    <div class="six columns">
-      {{ journal.time_spent }}
-    </div>
-  </div>
-  <div class="row">
-    <div class="six columns">
-      {{ journal.learnt }}
-    </div>
-  </div>
-  <div class="row">
-    <div class="six columns">
-      {{ journal.resources }}
-    </div>
-  </div>
-</form>
+    <tr>
+      <!-- entry attributes here -->
+      <td>{{ journal.title }}</td>
+      <td>{{ journal.date }}</td>
+      <td>{{ journal.time_spent }}</td>
+      <td>{{ journal.learnt }}</td>
+      <td>{{ journal.resources }}</td>
+    </tr>
 {% endfor %}
+  </tbody>
+</table>
+
 
 {% endblock %}
