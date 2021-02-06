@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+
+
+{% block content %}
+<h2>Journal Entries</h2>
+    {% if entries.count() %}
+        <table class="u-full-width">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+        {% for entry in entries %}
+            <tr>
+              <!-- entry attributes here -->
+                <td><a href="{{ url_for('detail', entry_id=entry.id) }}">{{ entry.title }}</a></td>
+                <td>{{ entry.date }}</td>
+            </tr>
+        {% endfor %}
+          </tbody>
+        </table>
+    {% else %}
+        <!-- message for missing journals -->
+        <h3>No journal entries yet!</h3>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,7 @@
+创建一个学习日志的本地web界面(local web interface)
+主页(main page)会列出日志标题(entry titles)和日期
+每一个日志标题会link到一个细节网页,展示题目,日期,花费的时间,你学了什么,以及要记住的resources
+包含添加或着编辑日志entries的能力
+当添加或者编辑一个日志entry的时候,会提示输入标题,日期,花费的时间,你学了什么,要记住的resources
+这些entries的结果必须储存到一个数据库中 并且展示到一个博客风格(blog style)的网页
+这个网页HTML/CSS已经提供给你
