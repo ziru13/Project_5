@@ -1,6 +1,11 @@
+
 {% extends 'layout.html' %}
 
 {% from 'macros.html' import render_field %}
+
+{% block css %}
+  <link rel="stylesheet" href="/static/css/details.css">
+{% endblock %}
 
 {% block menu %}
 {% for entry in entries %}
@@ -11,30 +16,39 @@
 {% endblock %}
 
 {% block content %}
+
 {% for journal in entries %}
-<table class="u-full-width">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Date</th>
-      <th>Time Spent</th>
-      <th>What You learned</th>
-      <th>Resources</th>
-    </tr>
-  </thead>
-  <tbody>
 
-    <tr>
-      <!-- entry attributes here -->
-      <td>{{ journal.title }}</td>
-      <td>{{ journal.date }}</td>
-      <td>{{ journal.time_spent }}</td>
-      <td>{{ journal.learnt }}</td>
-      <td>{{ journal.resources }}</td>
-    </tr>
+<div id="entry">
+  <div class="row">
+    <div class="title">
+      {{ journal.title }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="six columns date">
+      Posted on {{ journal.date }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="six columns">
+      {{ journal.time_spent }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="label">
+      What I learned
+    </div>
+    <div class="learned">
+      {{ journal.learnt }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="six columns">
+      Resources: {{ journal.resources }}
+    </div>
+  </div>
+</div>
 {% endfor %}
-  </tbody>
-</table>
-
 
 {% endblock %}

@@ -23,4 +23,3 @@ class JournalForm(Form):
     resources = StringField(
         'Resources To Remember (Optional)',
         validators=[])
-

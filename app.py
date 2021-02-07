@@ -1,7 +1,9 @@
+import mysql as mysql
+
 import forms
 import models
 
-from flask import Flask, g, redirect, url_for, render_template, flash
+from flask import Flask, g, redirect, url_for, render_template, flash, request
 
 DEBUG = True
 PORT = 8000
@@ -45,6 +47,24 @@ def add():
     return render_template('add.html', form=form)
 
 
+@app.route('/edit/<int:entry_id>', methods=['GET', 'POST'])
+def edit(entry_id):
+    """edit a journal entry."""
+    entry = models.Journal.select().where(
+        models.Journal.id == entry_id).get()
+    form = forms.JournalForm()
+    if form.validate_on_submit():
+        form.populate_obj(
+            title=form.title.data,
+            date=form.date.data,
+            time_spent=form.time_spent.data,
+            learnt=form.learnt.data,
+            resources=form.resources.data)
+        flash('Entry has been updated', 'success')
+        return redirect(url_for('index'))
+    return render_template('add.html', form=form)
+
+
 @app.route('/details/<int:entry_id>')
 def detail(entry_id):
     journals = models.Journal.select().where(
@@ -60,10 +80,6 @@ def delete(entry_id):
     if entry.DoesNotExist:
         flash('Entry has been deleted!', 'success')
     return redirect(url_for('index'))
-
-# @app.route('/entries/edit/<int:entry_id>', methods=['GET', 'POST'])
-# def edit(entry_id):
-#     
 
 
 if __name__ == '__main__':

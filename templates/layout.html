@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/static/css/normalize.css">
     <link rel="stylesheet" href="/static/css/skeleton.css">
     <link rel="stylesheet" href="/static/css/tacocat.css">
+    {% block css %}{% endblock %}
   </head>
   <body>
     {% with messages=get_flashed_messages() %}
