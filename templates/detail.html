@@ -1,4 +1,3 @@
-
 {% extends 'layout.html' %}
 
 {% from 'macros.html' import render_field %}
@@ -10,29 +9,29 @@
 {% block menu %}
 {% for entry in entries %}
 <a href="{{ url_for('index') }}">Home</a>
-<a href="#">Edit</a>
+<a href="{{ url_for('update', entry_id=entry.id) }}">Update</a>
 <a href="{{ url_for('delete', entry_id=entry.id) }}">Delete</a>
 {% endfor %}
 {% endblock %}
 
 {% block content %}
 
-{% for journal in entries %}
+{% for entry in entries %}
 
 <div id="entry">
   <div class="row">
     <div class="title">
-      {{ journal.title }}
+      {{ entry.title }}
     </div>
   </div>
   <div class="row">
     <div class="six columns date">
-      Posted on {{ journal.date }}
+      Posted on {{ entry.date }}
     </div>
   </div>
   <div class="row">
     <div class="six columns">
-      {{ journal.time_spent }}
+      {{ entry.time_spent }}
     </div>
   </div>
   <div class="row">
@@ -40,12 +39,12 @@
       What I learned
     </div>
     <div class="learned">
-      {{ journal.learnt }}
+      {{ entry.learnt }}
     </div>
   </div>
   <div class="row">
     <div class="six columns">
-      Resources: {{ journal.resources }}
+      Resources: {{ entry.resources }}
     </div>
   </div>
 </div>

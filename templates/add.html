@@ -2,6 +2,10 @@
 
 {% from 'macros.html' import render_field %}
 
+{% block menu %}
+<a href="{{ url_for('index') }}">Home</a>
+{% endblock %}
+
 {% block content %}
 
 <form method='POST' action=''>
