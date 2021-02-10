@@ -38,11 +38,11 @@ def update(entry_id):
     form = forms.JournalForm()     # if the form validates
     if form.validate_on_submit():  # if click update button
         entry.title = form.title.data
-        entry.date = form.date.data,
-        entry.time_spent = form.time_spent.data,
-        entry.learnt = form.learnt.data,
+        entry.date = form.date.data
+        entry.time_spent = form.time_spent.data
+        entry.learnt = form.learnt.data
         entry.resources = form.resources.data
-          # commit the changes
+        entry.save()  # commit the changes
         flash('Entry has been updated', 'success')
         return redirect(url_for('detail', entry_id=entry.id))
     elif request.method == 'GET':  # fill the form with current data
